@@ -1,0 +1,25 @@
+﻿@inherits LayoutComponentBase
+
+<MudThemeProvider IsDarkMode="true" Theme="ThemeProvider.Theme"/>
+<MudDialogProvider/>
+<MudSnackbarProvider/>
+
+<PageTitle>WebApp</PageTitle>
+
+<MudLayout>
+        <CascadingValue Value="@this">
+            <NavMenu/>
+        </CascadingValue>
+
+        <MudMainContent Style="padding: 0; overflow-x: hidden;">
+            <div style="min-height: 100vh">
+                <CascadingValue Value="@this">
+                    @Body
+                </CascadingValue>
+                <div style="height: 10rem;"></div>
+            </div>
+            <CascadingValue Value="@this">
+                <Footer></Footer>
+            </CascadingValue>
+        </MudMainContent>
+</MudLayout>
