@@ -7,7 +7,15 @@ on:
 
 env:
   REGISTRY: docker.io
-  IMAGE_NAME: trueberryless/trainit
+  
+  IMAGE_NAME: trueberryless/root
+  DOCKERFILE_LOCATION: View
+  
+  IMAGE_NAME_API: trueberryless/api-root
+  DOCKERFILE_LOCATION_API: Api
+  
+  IMAGE_NAME_DOCS: 0
+  DOCKERFILE_LOCATION_DOCS: 0
 
 jobs:
 
@@ -108,20 +116,58 @@ jobs:
           password: ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Extract metadata (tags, labels) for Docker
+        if: ${{ env.IMAGE_NAME }} != 0
         id: meta
         uses: docker/metadata-action@v4
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
 
       - name: Build and push Docker image
+        if: ${{ env.IMAGE_NAME }} != 0 && ${{ env.DOCKERFILE_LOCATION }} != 0
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}"
+          context: "{{defaultContext}}/${{ env.DOCKERFILE_LOCATION }}"
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:${{ env.MAJOR}}.${{ env.MINOR}}.${{ env.PATCH}}
             ${{ env.IMAGE_NAME }}:latest
           labels: ${{ steps.meta.outputs.labels }}
+          
+      - name: Extract metadata (tags, labels) for Docker API
+        if: ${{ env.IMAGE_NAME_API }} != 0
+        id: meta_api
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_API }}
+          
+      - name: Build and push Docker image API
+        if: ${{ env.IMAGE_NAME_API }} != 0 && ${{ env.DOCKERFILE_LOCATION_API }} != 0
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}/${{ env.DOCKERFILE_LOCATION_API }}"
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME_API }}:${{ env.MAJOR}}.${{ env.MINOR}}.${{ env.PATCH}}
+            ${{ env.IMAGE_NAME_API }}:latest
+          labels: ${{ steps.meta_api.outputs.labels }}
+          
+      - name: Extract metadata (tags, labels) for Docker DOCS
+        if: ${{ env.IMAGE_NAME_DOCS }} != 0
+        id: meta_docs
+        uses: docker/metadata-action@v4
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME_DOCS }}
+          
+      - name: Build and push Docker image DOCS
+        if: ${{ env.IMAGE_NAME_DOCS }} != 0 && ${{ env.DOCKERFILE_LOCATION_DOCS }} != 0
+        uses: docker/build-push-action@v4
+        with:
+          context: "{{defaultContext}}/${{ env.DOCKERFILE_LOCATION_DOCS }}"
+          push: true
+          tags: |
+            ${{ env.IMAGE_NAME_DOCS }}:${{ env.MAJOR}}.${{ env.MINOR}}.${{ env.PATCH}}
+            ${{ env.IMAGE_NAME_DOCS }}:latest
+          labels: ${{ steps.meta_docs.outputs.labels }}
       
       - name: Check out the repo
         uses: actions/checkout@v3
