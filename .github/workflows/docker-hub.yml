@@ -126,7 +126,7 @@ jobs:
         if: ${{ env.IMAGE_NAME }} != 0 && ${{ env.DOCKERFILE_LOCATION }} != 0
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}/${{ env.DOCKERFILE_LOCATION }}"
+          context: "{{defaultContext}}:${{ env.DOCKERFILE_LOCATION }}"
           push: true
           tags: |
             ${{ env.IMAGE_NAME }}:${{ env.MAJOR}}.${{ env.MINOR}}.${{ env.PATCH}}
@@ -144,7 +144,7 @@ jobs:
         if: ${{ env.IMAGE_NAME_API }} != 0 && ${{ env.DOCKERFILE_LOCATION_API }} != 0
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}/${{ env.DOCKERFILE_LOCATION_API }}"
+          context: "{{defaultContext}}:${{ env.DOCKERFILE_LOCATION_API }}"
           push: true
           tags: |
             ${{ env.IMAGE_NAME_API }}:${{ env.MAJOR}}.${{ env.MINOR}}.${{ env.PATCH}}
@@ -162,7 +162,7 @@ jobs:
         if: ${{ env.IMAGE_NAME_DOCS }} != 0 && ${{ env.DOCKERFILE_LOCATION_DOCS }} != 0
         uses: docker/build-push-action@v4
         with:
-          context: "{{defaultContext}}/${{ env.DOCKERFILE_LOCATION_DOCS }}"
+          context: "{{defaultContext}}:${{ env.DOCKERFILE_LOCATION_DOCS }}"
           push: true
           tags: |
             ${{ env.IMAGE_NAME_DOCS }}:${{ env.MAJOR}}.${{ env.MINOR}}.${{ env.PATCH}}
