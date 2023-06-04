@@ -5,9 +5,9 @@ EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
-COPY ["../View/View.csproj", "View/"]
-COPY ["../Domain/Domain.csproj", "Domain/"]
-COPY ["../Model/Model.csproj", "Model/"]
+COPY ["View/View.csproj", "View/"]
+COPY ["Domain/Domain.csproj", "Domain/"]
+COPY ["Model/Model.csproj", "Model/"]
 RUN dotnet restore "../View/View.csproj"
 COPY . .
 WORKDIR "/src/View"
