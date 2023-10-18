@@ -1,0 +1,5 @@
+services:
+    mutanuq:
+        image: trueberryless/mutanuq
+        ports:
+            - "80:80"
