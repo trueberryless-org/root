@@ -1,0 +1,104 @@
+.card-grid {
+    display: grid;
+    gap: 1rem;
+}
+
+.card-grid > * {
+    margin-top: 0 !important;
+}
+
+@media (min-width: 50rem) {
+    .card-grid {
+        transition: 0.3s ease-in-out 0.2s;
+        grid-template-columns: 1fr 1fr;
+        gap: 1.5rem;
+    }
+
+    .card-grid:has(.card:nth-child(2n - 1):hover) {
+        grid-template-columns: 1.5fr 0.5fr;
+    }
+
+    .card-grid:has(.card:nth-child(2n):hover) {
+        grid-template-columns: 0.5fr 1.5fr;
+    }
+
+    .stagger {
+        --stagger-height: 10rem;
+        padding-bottom: var(--stagger-height);
+    }
+
+    .stagger > *:nth-child(2n) {
+        transform: translateY(var(--stagger-height));
+    }
+
+    .stagger:hover {
+        padding-bottom: 0;
+    }
+
+    .stagger:hover > *:nth-child(2n) {
+        transform: translateY(0);
+    }
+}
+
+.card {
+    height: 400px;
+    position: relative;
+    overflow: hidden;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out, filter 0.5s ease-in-out;
+    filter: brightness(0.7);
+}
+
+/* Dark overlay on hover */
+.card:hover {
+    filter: brightness(1);
+}
+
+/* Card content */
+.card-content {
+    position: absolute;
+    padding: 1rem 2rem;
+    color: #fff;
+    transition: top 0.3s ease-in-out;
+    top: 75%;
+
+    max-width: 550px;
+}
+
+.card:hover .card-content {
+    top: 60%;
+}
+
+/* Heading and description style */
+.card-content h2 {
+    font-size: 24px;
+    margin: 0;
+}
+
+.card-content p {
+    font-size: 16px;
+    margin: 10px 0;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.card:hover .card-content p {
+    opacity: 1;
+}
+
+.card:nth-child(1) {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("./assets/mutanuq.jpg") center/cover;
+}
+
+.card:nth-child(2) {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            center/cover;
+}
+
+.card {
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
+        url("https://images.unsplash.com/photo-1534438327276-14e5300c3a48?auto=format&fit=crop&q=80&w=2070&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D")
+            center/cover;
+}
