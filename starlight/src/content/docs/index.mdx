@@ -20,12 +20,13 @@ sidebar:
     hidden: true
 ---
 
-import { Card, CardGrid } from "@astrojs/starlight/components";
+import { Card } from "../../components/Card.astro";
+import { CardGrid } from "../../components/CardGrid.astro";
 
 ## Projects
 
-<div class="card-grid stagger">
-    <div class="card">
+<CardGrid>
+    <div class="card" href="https://mutanuq.trueberryless.org">
         <div class="card-content">
             <h2>Mutanuq</h2>
             <p>
@@ -33,13 +34,22 @@ import { Card, CardGrid } from "@astrojs/starlight/components";
                 built with Starlight!
             </p>
         </div>
+        {/* <div class="img">
+            <img src="/src/assets/mutanuq.jpg" />
+        </div> */}
+        <div class="card-docs">
+            <a href="/mutanuq" />
+        </div>
     </div>
-    <div class="card">
+    <a class="card" href="https://trainit.trueberryless.org">
         <div class="card-content">
             <h2>TrainIT</h2>
             <p>
                 Track your fitness progress with this responsive website! Made for mobile devices.
             </p>
         </div>
-    </div>
-</div>
+        <div class="card-docs">
+            <a href="/trainit" />
+        </div>
+    </a>
+</CardGrid>
