@@ -1,32 +1,26 @@
 ---
-title: Welcome to trueberryless.org
-description: Explore my projects
+title: Welcome to trueberryless.org!
+description: trueberryless.org is a collection of my projects which are important for me.
 template: splash
 hero:
     tagline: Explore my projects
     image:
         file: ../../assets/logo.png
     actions:
-        - text: Explore
-          link: /mutanuq
-          icon: right-arrow
-          variant: primary
-        - text: Help on GitHub
+        - text: Follow us on GitHub
           link: https://github.com/trueberryless-org
           icon: external
+          variant: primary
 prev: false
 next: false
 sidebar:
     hidden: true
 ---
 
-import { Card } from "../../components/Card.astro";
-import { CardGrid } from "../../components/CardGrid.astro";
-
 ## Projects
 
-<CardGrid>
-    <div class="card" href="https://mutanuq.trueberryless.org">
+<div class="card-grid stagger">
+    <a class="card" href="https://mutanuq.trueberryless.org">
         <div class="card-content">
             <h2>Mutanuq</h2>
             <p>
@@ -34,13 +28,7 @@ import { CardGrid } from "../../components/CardGrid.astro";
                 built with Starlight!
             </p>
         </div>
-        {/* <div class="img">
-            <img src="/src/assets/mutanuq.jpg" />
-        </div> */}
-        <div class="card-docs">
-            <a href="/mutanuq" />
-        </div>
-    </div>
+    </a>
     <a class="card" href="https://trainit.trueberryless.org">
         <div class="card-content">
             <h2>TrainIT</h2>
@@ -48,8 +36,5 @@ import { CardGrid } from "../../components/CardGrid.astro";
                 Track your fitness progress with this responsive website! Made for mobile devices.
             </p>
         </div>
-        <div class="card-docs">
-            <a href="/trainit" />
-        </div>
     </a>
-</CardGrid>
+</div>

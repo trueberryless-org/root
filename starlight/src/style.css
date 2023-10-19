@@ -31,10 +31,6 @@
         transform: translateY(var(--stagger-height));
     }
 
-    .stagger:hover {
-        padding-bottom: 0;
-    }
-
     .stagger:hover > *:nth-child(2n) {
         transform: translateY(0);
     }
@@ -110,7 +106,7 @@
         url("./assets/trainit.jpg") center/cover;
 }
 
-.card-docs {
+/* .card-docs {
     position: absolute;
     --button-width: 4rem;
 
@@ -121,4 +117,4 @@
     left: 80%;
     border-radius: 100px;
     border: solid #17181c calc(0.2 * var(--button-width));
-}
+} */
